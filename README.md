@@ -1,4 +1,4 @@
-# Jaqlap
+# Jaqlab
 
 Ecommerce for websites. Status: unfinished
 
