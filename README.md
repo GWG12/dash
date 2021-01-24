@@ -1,3 +1,7 @@
+# Jaqlap
+
+Ecommerce for websites. Status: unfinished
+
 # Guía de Uso
 
 Se cuentan con las siguientes rutas:
