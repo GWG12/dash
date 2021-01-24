@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Planes</h1>
+    <h3>Plan 1</h3>
+      <p>Este es el plan 1</p>
+      <button onclick="window.location.href='{% url 'registro_cliente' plan='basico' %}'">Continue</button>
+      <br>
+    <h3>Plan 2</h3>
+      <p>Este es el plan 2</p>
+      <button onclick="window.location.href='{% url 'registro_cliente' plan='pro' %}'">Contratar</button>
+      <br>
+    <h3>Plan 3</h3>
+      <p>Este es el plan 3</p>
+      <button onclick="window.location.href='{% url 'registro_cliente' plan='vip' %}'">Contratar</button>
+      <br>
+  </body>
+</html>

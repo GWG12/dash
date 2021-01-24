@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on localhost:8000
+From: webmaster@localhost
+To: gwalle.gza@gmail.com
+Date: Tue, 07 May 2019 04:53:32 -0000
+Message-ID: <155720481235.16360.14035910915934996227@DESKTOP-9HAG3PN>
+
+
+You're receiving this email because you requested a password reset for your user account at localhost:8000.
+
+Please go to the following page and choose a new password:
+
+http://localhost:8000/password-reset-confirm/MQ/563-03050f0c249d1a8846dc/
+
+Your username, in case you've forgotten: gwall
+
+Thanks for using our site!
+
+The localhost:8000 team
+
+
+
+-------------------------------------------------------------------------------

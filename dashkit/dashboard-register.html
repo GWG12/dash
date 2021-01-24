@@ -1,0 +1,225 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags always come first -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <title> REGISTER</title>
+        <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+
+        <!--Core CSS -->
+        <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
+        <link rel="stylesheet" href="{% static 'css/app.css' %}">
+        <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+        <link rel="stylesheet" href="{% static 'css/icons.min.css' %}">
+
+    </head>
+    <body>
+        <div class="pageloader"></div>
+        <div class="infraloader is-active"></div>
+        <section class="hero is-fullheight is-light-grey is-bold">
+            <!-- Style switcher -->
+            <div class="switcher">
+                <div class="switcher-block is-primary animated preFadeInLeft fadeInLeft">
+                    <i class="sl sl-icon-drop"></i> <div class="button-text animated preFadeInLeft fadeInLeft">Material style</div>
+                </div>
+                <div class="switcher-block is-secondary animated preFadeInLeft fadeInLeft is-hidden">
+                    <i class="sl sl-icon-drop"></i> <div class="button-text animated preFadeInLeft fadeInLeft">Classic style</div>
+                </div>
+            </div>
+            <!-- /Style switcher -->
+
+            <div class="hero-body">
+                <div class="container">
+
+                    <div class="columns is-vcentered">
+                        <div class="column is-4 is-offset-4">
+
+                            <!-- Classic inputs -->
+                            <div id="classic" class="login-form-wrapper">
+                                <!-- Classic login form -->
+                                <form id="login-form" action="{% url 'register' %}" class="animated preFadeInLeft fadeInLeft" method="POST">
+                                  {% csrf_token %}
+                                    <div class="flex-card auth-card is-light-raised light-bordered card-overflow">
+                                        <div class="auth-card-header header-primary">
+                                            <a href="index.html"><img src="assets/images/logos/bulkit-w.png" alt=""></a>
+                                        </div>
+                                        <div class="field pb-10">
+                                            <div class="control has-icons-right">
+                                                <!-- <input class="input is-large" type="text" placeholder="Username">-->
+                                                <!--{{form.username}}-->
+                                                <span class="icon is-medium is-right">
+                                                    <i class="sl sl-icon-user"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="field pb-10">
+                                            <div class="control has-icons-right">
+                                                <!-- <input class="input is-large" type="text" placeholder="Username">-->
+                                                {{form.email}}
+                                                <span class="icon is-medium is-right">
+                                                    <i class="sl sl-icon-user"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="control has-icons-right">
+                                                <!--<input class="input is-large" type="text" placeholder="Password">-->
+                                                {{form.password1}}
+                                                <span class="icon is-medium is-right">
+                                                    <i class="sl sl-icon-lock"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="control has-icons-right">
+                                                <!--<input class="input is-large" type="text" placeholder="Password">-->
+                                                {{form.password2}}
+                                                <span class="icon is-medium is-right">
+                                                    <i class="sl sl-icon-lock"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="pt-10 pb-10">
+                                            <button class="button button-cta btn-align primary-btn is-fullwidth btn-outlined is-bold rounded raised no-lh">Login</button>
+                                        </div>
+                                    </div>
+                                  </form>
+                                    <p class="has-text-centered">
+                                        <a class="forgot" href="#">Olvidé la contraseña</a>
+                                    </p>
+                                </div>
+                                {% if form.errors %}
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                            <div class="alert alert-danger">
+                                                <strong>{{ error|escape }}</strong>
+                                            </div>
+                                        {% endfor %}
+                                    {% endfor %}
+                                {% endif %}
+                                <!-- /Classic login form -->
+
+                                <!-- Classic recover form -->
+                                <div id="recover-form" class="animated preFadeInLeft fadeInLeft is-hidden">
+                                    <div class="flex-card auth-card is-light-raised light-bordered card-overflow">
+                                        <div class="auth-card-header header-primary">
+                                            <a href="index.html"><img src="assets/images/logos/bulkit-w.png" alt=""></a>
+                                        </div>
+                                        <div class="field pb-10">
+                                            <div class="control has-icons-right">
+                                                <input class="input is-large" type="text" placeholder="Email address">
+                                                <span class="icon is-medium is-right">
+                                                    <i class="sl sl-icon-paper-plane"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <p class="has-text-left pt-10 pb-10">
+                                            <a class="no-account" href="#">Need Support?</a>
+                                        </p>
+                                        <div class="pt-10 pb-10">
+                                            <button class="button button-cta btn-align primary-btn is-fullwidth btn-outlined is-bold rounded raised no-lh">Reset password</button>
+                                        </div>
+                                    </div>
+                                    <p class="has-text-centered">
+                                        <a class="return" href="#">Back to login</a>
+                                    </p>
+                                </div>
+                                <!-- /Classic recover form -->
+                            </div>
+                            <!-- /Classic inputs -->
+
+                            <!-- Material inputs -->
+                            <div id="material" class="login-form-wrapper is-hidden">
+
+                                <!-- Material login form -->
+                                <div id="material-login-form" class="animated preFadeInLeft fadeInLeft">
+                                    <div class="flex-card auth-card is-light-raised light-bordered card-overflow">
+                                        <div class="auth-card-header header-secondary">
+                                            <a href="index.html"><img src="assets/images/logos/bulkit-w.png" alt=""></a>
+                                        </div>
+                                        <div class="control-material is-secondary">
+                                            <input class="material-input" type="text" required>
+                                            <span class="material-highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Username</label>
+                                        </div>
+                                        <div class="control-material is-secondary">
+                                            <input class="material-input" type="text" required>
+                                            <span class="material-highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Password</label>
+                                        </div>
+                                        <p class="has-text-left mt-30">
+                                            <a class="no-account is-secondary" href="#">Dont have an account?</a>
+                                        </p>
+                                        <div class="mt-20">
+                                            <button class="button button-cta btn-align secondary-btn is-fullwidth btn-outlined is-bold rounded raised no-lh">Login</button>
+                                        </div>
+                                    </div>
+                                    <p class="has-text-centered">
+                                        <a class="forgot forgot-material is-secondary" href="#">Forgot password?</a>
+                                    </p>
+                                </div>
+                                <!-- /Material login form -->
+
+                                <!-- Material recover form -->
+                                <div id="material-recover-form" class="animated preFadeInLeft fadeInLeft is-hidden">
+                                    <div class="flex-card auth-card is-light-raised light-bordered card-overflow">
+                                        <div class="auth-card-header header-secondary">
+                                            <a href="index.html"><img src="assets/images/logos/bulkit-w.png" alt=""></a>
+                                        </div>
+                                        <div class="control-material is-secondary">
+                                            <input class="material-input" type="text" required>
+                                            <span class="material-highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Email address</label>
+                                        </div>
+                                        <p class="has-text-left mt-30">
+                                            <a class="no-account is-secondary" href="#">Need Support?</a>
+                                        </p>
+                                        <div class="mt-20">
+                                            <button class="button button-cta btn-align secondary-btn is-fullwidth btn-outlined is-bold rounded raised no-lh">Reset Password</button>
+                                        </div>
+                                    </div>
+                                    <p class="has-text-centered">
+                                        <a class="return return-material is-secondary" href="#">Back to login</a>
+                                    </p>
+                                </div>
+                                <!-- /Material recover form -->
+                            </div>
+                            <!-- /Material inputs -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Concatenated jQuery and plugins -->
+        <script src="{% static 'js/app.js' %}"></script>
+        <script src="{% static 'js/core.js' %}"></script>
+
+        <!-- Bulkit js -->
+        <script src="{% static 'js/components-modals.js' %}"></script>
+        <!--script src="assets/js/components-quickview.js"></script-->
+        <script src="{% static 'js/common.js' %}"></script>
+        <script src="{% static 'js/dashboard.js' %}"></script>
+
+        <!-- Extensions js -->
+        <script src="{% static 'js/documents.js' %}"></script>
+        <script src="{% static 'js/contacts.js' %}"></script>
+        <script src="{% static 'js/projects.js' %}"></script>
+        <script src="{% static 'js/kanban.js' %}"></script>
+        <script src="{% static 'js/crm.js' %}"></script>
+        <script src="{% static 'js/forum.js' %}"></script>
+        <script src="{% static 'js/support.js' %}"></script>
+        <script src="{% static 'js/datatable.js' %}"></script>
+        <script src="{% static 'js/charts.js' %}"></script>
+        <script src="{% static 'js/chat.js' %}"></script>
+        <script src="{% static 'js/mailbox.js' %}"></script>
+        <script src="{% static 'js/auth.js' %}"></script>
+    </body>
+</html>

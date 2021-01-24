@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      Mercadopago.setPublishableKey("TEST-2e657be7-94ac-42f8-a3ea-e93f0529c399");
+    </script>
+  </head>
+  <body>
+    <h1>PAGAR</h1>
+        <form action="{% url 'ver-cliente' %}" method="post" id="pay" name="pay" >
+          {% csrf_token %}
+          <input type="hidden" id="cardId" name="cardId" data-checkout='cardId' value="{{data.card_id}}">
+              <label for="cvv">Security code:</label>
+              <input type="text" id="cvv" data-checkout="securityCode" placeholder="123" />
+          <input type="submit" value="Pay!" />
+        </form>
+    <script type="text/javascript">
+      doSubmit = false;
+      document.querySelector('#pay').addEventListener('submit', doPay);
+      function doPay(event){
+          console.log('DOPAY');
+          event.preventDefault();
+          if(!doSubmit){
+              var form = document.querySelector('#pay');
+
+              Mercadopago.createToken(form, sdkResponseHandler); // The function "sdkResponseHandler" is defined below
+
+              return false;
+          }
+      };
+
+      function sdkResponseHandler(status, response) {
+          console.log(status);
+          if (status != 200 && status != 201) {
+              alert("verify filled data");
+          }else{
+              var form = document.querySelector('#pay');
+              var card = document.createElement('input');
+              card.setAttribute('name', 'token');
+              card.setAttribute('type', 'hidden');
+              card.setAttribute('value', response.id);
+              form.appendChild(card);
+              doSubmit=true;
+              form.submit();
+          }
+      };
+    </script>
+  </body>
+</html>

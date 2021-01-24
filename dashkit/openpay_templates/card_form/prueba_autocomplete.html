@@ -1,0 +1,38 @@
+<html>
+<title>Busqueda</title>
+<head>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#busqueda").autocomplete({
+            source:[ "python","c++", "java", "php", "coldfusion", "javascript", "asp", "ruby" ],
+            minLength: 1
+        });
+    });
+</script>
+</head>
+<body>
+    <h1>THE FORM</h1>
+	<label for="busqueda">busqueda:</label>
+	<input id="busqueda" name="busqueda" type="text">
+</body>
+</html>
+
+$(document).ready(function() {
+    $('#busqueda').change(function(event) {
+        $.ajax({
+            data: {
+                busqueda: $('#busqueda').val(),
+            },
+            type: 'GET',
+            url: '{{url_for('db_constructor.processing')}}'
+        }).done(function (data){
+            $('#busqueda').autocomplete({
+                source: data,
+                minLength: 2
+            });
+        });
+    });
+});
