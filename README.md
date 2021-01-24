@@ -1,6 +1,6 @@
 # Jaqlab
 
-Ecommerce for websites. Status: unfinished
+Ecommerce for web development services. Status: unfinished
 
 # Guía de Uso
 
